@@ -1,0 +1,18 @@
+<h2>Idhar sb create aur list hogaa</h2><p>Aur delete bhi</p>
+
+<form method="post">
+    {% csrf_token %}
+        <label for="{{ form.title.id_for_label }}">Title</label>
+        <input type="text" name="{{ form.title.name }}"/>
+        <label for="{{ form.body.id_for_label }}"> Body</label>
+        <input type="text" name="{{ form.body.name }}"/>
+    <button type="submit">Submit</button>
+    {{ form.errors }}
+</form>
+
+{% for post in posts %}
+    <a href="{% url 'update' post.pk %}">{{ post.title }} </a><a href="{% url 'delete' post.pk %}"> Delete</a>
+{% endfor %}
+
+{{ post.title }}
+{{ post.body }}
